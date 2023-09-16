@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 	va_start(hp, format);
 
 
-	if (format == '\0')
+	if (*format == '\0')
 		return (-1);
 	while (*format != '\0')
 	{
