@@ -24,11 +24,10 @@ int _strlen(char *s)
 }
 
 /**
- *_printf - Function to Print formatted output.
- * @format: String to be printed.
- * @...: The rest of the arguments
+ * _printf - Outputs a formatted string.
+ * @format: Character string to print - may contain directives.
  *
- * Return: The number of chars printed.
+ * Return: The number of characters printed.
  */
 int _printf(const char *format, ...)
 {
