@@ -32,7 +32,7 @@ int _strlen(char *s)
 int _printf(const char *format, ...)
 {
 	int f = 0, len;
-	char c;
+	unsigned char c;
 	char *q;
 	va_list hp;
 
