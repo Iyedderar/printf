@@ -41,6 +41,8 @@ int _printf(const char *format, ...)
 
 	if (*format == '\0' || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
+	if (format[2] == '\0' && (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 	while (*format != '\0')
 	{
 		if (*format != '%')
