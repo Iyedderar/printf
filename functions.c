@@ -1,7 +1,5 @@
 #include "main.h"
 
-#include "main.h"
-
 /**
  * printf_char - prints a char.
  * @val: arguments.
@@ -18,10 +16,9 @@ int printf_char(va_list val)
 
 /**
  * printf_string - print a string.
- * @val: argumen t.
+ * @val: argument.
  * Return: the length of the string.
  */
-
 int printf_string(va_list val)
 {
 	char *s;
@@ -44,3 +41,50 @@ int printf_string(va_list val)
 		return (len);
 	}
 }
+
+/**
+ * printf_integer - print an integer.
+ * @val: argument.
+ * Return: the number of digits printed.
+ */
+int printf_integer(va_list val)
+{
+	int n = va_arg(val, int);
+	int len = 0;
+	int is_negative = 0;
+
+	if (n < 0)
+	{
+		_putchar('-');
+		is_negative = 1;
+		n = -n;
+		len++;
+	}
+
+	if (n == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+
+	len += print_digits(n);
+	return (len);
+}
+
+/**
+ * print_digits - helper function to print digits.
+ * @n: integer to print.
+ * Return: the number of digits printed.
+ */
+int print_digits(int n)
+{
+	int len = 0;
+
+	if (n == 0)
+		return (0);
+
+	len += print_digits(n / 10);
+	_putchar((n % 10) + '0');
+	return (len + 1);
+}
+
