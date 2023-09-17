@@ -25,7 +25,7 @@ int printf_string(va_list val)
 	int len;
 
 	s = va_arg(val, char *);
-	if (s == NULL)
+	if (*s == '\0')
 	{
 		s = "(null)";
 		len = _strlen(s);
