@@ -7,10 +7,16 @@
 #include <stdio.h>
 #include <limits.h>
 
-int printf_char(char s);
-int printf_string(char *s);
 
+typedef struct format
+{
+	char *id;
+	int (*f)();
+} convert_match;
+
+int printf_37(void);
+int printf_char(va_list val);
+int printf_string(va_list val);
+int _putchar(char c);
 int _printf(const char *format, ...);
-
-int _strlen(char *s);
 #endif

@@ -1,54 +1,40 @@
 #include "main.h"
-
-
-
-
 /**
- *_printf - Function to Print formatted output.
- * @format: String to be printed.
- * @...: The rest of the arguments
- *
- * Return: The number of chars printed.
+ * _printf - is a function that selects the correct function to print.
+ * @format: identifier to look for.
+ * Return: the length of the string.
  */
-int _printf(const char *format, ...)
+int _printf(const char * const format, ...)
 {
-	 int f = 0;
-	char c, *s;
-	va_list hp;
+	convert_match m[] = {
+		{"%s", printf_string}, {"%c", printf_char},
+	};
 
-	va_start(hp, format);
-	if (*format == '\0' || (format[0] == '%' && format[1] == '\0'))
+	va_list args;
+	int i = 0, j, len = 0;
+
+	va_start(args, format);
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	while (*format != '\0')
+
+Here:
+	while (format[i] != '\0')
 	{
-		if (*format != '%')
+		j = 1;
+		while (j >= 0)
 		{
-			write(1, format, 1);
-			f++;
+			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+			{
+				len += m[j].f(args);
+				i = i + 2;
+				goto Here;
+			}
+			j--;
 		}
-		else
-		{
-			format++;
-			if (*format == '\0')
-				break;
-			if (*format == '%')
-			{
-				write(1, format, 1);
-				f++;
-			}
-			if (*format == 'c')
-			{
-				c = va_arg(hp, int);
-				f += printf_char(c);
-			}
-			if (*format == 's')
-			{
-				s = va_arg(hp, char *);
-				f += printf_string(s);
-			}
-		}
-		format++;
+		_putchar(format[i]);
+		len++;
+		i++;
 	}
-	va_end(hp);
-	return (f);
+	va_end(args);
+	return (len);
 }
