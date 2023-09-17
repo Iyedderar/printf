@@ -1,13 +1,12 @@
 #include "main.h"
 
 /**
- * _printf - A function that selects the correct function to print.
- * @format: The format string.
- * @...: The rest of the arguments.
+ * _printf - Prints formatted output according to a format.
+ * @format: A format string containing conversion specifiers.
  *
- * Return: The number of characters printed.
+ * Return: The number of characters printed, or -1 on failure.
  */
-int _printf(const char *format, ...)
+int _printf(const char * const format, ...)
 {
 	va_list args;
 	int i = 0, j, len = 0;
@@ -15,36 +14,29 @@ int _printf(const char *format, ...)
 	convert_match m[] = {
 		{"%s", printf_string},
 		{"%c", printf_char},
-		{"%%", printf_37},
-		{"%d", printf_integer},
-		{"%i", printf_integer},
+		{"%%", printf_37}
 	};
 
 	va_start(args, format);
-
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
 	while (format[i] != '\0')
 	{
-		j = 0;
-		while (j < 5)
+		j = 2;
+		while (j >= 0)
 		{
-			if (format[i] == '%' && format[i + 1] == m[j].id[1])
+			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
 			{
 				len += m[j].f(args);
-				i += 2;
-				break;
+				i = i + 2;
+				goto Here;
 			}
-			j++;
+			j--;
 		}
-
-		if (j == 5)
-		{
-			_putchar(format[i]);
-			len++;
-			i++;
-		}
+		_putchar(format[i]);
+		len++;
+		i++;
 	}
 
 	va_end(args);
