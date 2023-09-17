@@ -2,7 +2,7 @@
 
 /**
  * printf_char - prints a char.
- * @val: arguments.
+ * @s: arguments.
  * Return: 1.
  */
 
@@ -13,7 +13,7 @@ int printf_char(char s)
 }
 /**
  * printf_string - print a string.
- * @val: argumen t.
+ * @s: argumen t.
  * Return: the length of the string.
  */
 int printf_string(char *s)
@@ -21,6 +21,6 @@ int printf_string(char *s)
 	int len;
 
 		len = _strlen(s);
-		write(1,s,len);
+		write(1, s, len);
 		return (len);
 }
