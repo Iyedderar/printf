@@ -12,20 +12,18 @@
  */
 int _printf(const char *format, ...)
 {
-	int f = 0;
+	 int f = 0;
+	char c, *s;
 	va_list hp;
 
 	va_start(hp, format);
 	if (*format == '\0' || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-	if (*format == '\0')
 		return (-1);
 	while (*format != '\0')
 	{
 		if (*format != '%')
 		{
 			write(1, format, 1);
-
 			f++;
 		}
 		else
@@ -40,11 +38,13 @@ int _printf(const char *format, ...)
 			}
 			if (*format == 'c')
 			{
-				f += printf_char(hp);
+				c = va_arg(hp, int);
+				f += printf_char(c);
 			}
 			if (*format == 's')
 			{
-				f += printf_string(hp);
+				s = va_arg(hp, char *);
+				f += printf_string(s);
 			}
 		}
 		format++;

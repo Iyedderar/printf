@@ -6,11 +6,8 @@
  * Return: 1.
  */
 
-int printf_char(va_list val)
+int printf_char(char s)
 {
-	char s;
-
-	s = va_arg(val, int);
 	write(1, &s, 1);
 	return (1);
 }
@@ -19,23 +16,11 @@ int printf_char(va_list val)
  * @val: argumen t.
  * Return: the length of the string.
  */
-int printf_string(va_list val)
+int printf_string(char *s)
 {
-	char *s;
 	int len;
 
-	s = va_arg(val, char *);
-	if (*s == '\0')
-	{
-		s = "(null)";
 		len = _strlen(s);
-		write(1, s, len);
+		write(1,s,len);
 		return (len);
-	}
-	else
-	{
-		len = _strlen(s);
-		write(1, s, len);
-		return (len);
-	}
 }
