@@ -8,4 +8,7 @@
 #include <limits.h>
 
 int _printf(const char *format, ...);
+int _strlen(char *s);
+int printf_char(va_list val);
+int printf_string(va_list val);
 #endif
