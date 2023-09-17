@@ -1,21 +1,19 @@
 #include "main.h"
 
 /**
- * _printf - Prints formatted output according to a format.
- * @format: A format string containing conversion specifiers.
- *
- * Return: The number of characters printed, or -1 on failure.
+ * _printf - A function that selects the correct function to print.
+ * @format: Identifier to look for.
+ * Return: The length of the string.
  */
-int _printf(const char * const format, ...)
+int _printf(const char *format, ...)
 {
-	va_list args;
-	int i = 0, j, len = 0;
-
 	convert_match m[] = {
-		{"%s", printf_string},
-		{"%c", printf_char},
+		{"%s", printf_string}, {"%c", printf_char},
 		{"%%", printf_37}
 	};
+
+	va_list args;
+	int i = 0, j, len = 0;
 
 	va_start(args, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -30,7 +28,7 @@ int _printf(const char * const format, ...)
 			{
 				len += m[j].f(args);
 				i = i + 2;
-				goto Here;
+				goto here;
 			}
 			j--;
 		}
@@ -38,7 +36,7 @@ int _printf(const char * const format, ...)
 		len++;
 		i++;
 	}
-
+here:
 	va_end(args);
 	return (len);
 }
