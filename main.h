@@ -24,7 +24,5 @@ int printf_char(va_list val);
 int printf_string(va_list val);
 int _putchar(char c);
 int _printf(const char *format, ...);
-/* Prototypes for new functions */
-int printf_int(va_list val);
-int print_number(int n);
+int printf_integer(va_list val);
 #endif
