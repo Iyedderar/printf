@@ -19,7 +19,7 @@ typedef struct format
 	int (*f)();
 } convert_match;
 int print_int(va_list val);
-char *_itoa(int num, int base);
+
 int printf_d(va_list val);
 int _strlen(char *s);
 int printf_37(void);
