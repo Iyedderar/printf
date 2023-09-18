@@ -8,7 +8,7 @@
 
 int print_int(va_list val)
 {
-	int n = va_arg(args, int);
+	int n = va_arg(val, int);
 	int num, last = n % 10, digit, exp = 1;
 	int  i = 1;
 
