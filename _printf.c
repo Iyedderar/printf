@@ -9,7 +9,7 @@ int _printf(const char * const format, ...)
 	convert_match m[] = {
 		{"%s", printf_string}, {"%c", printf_char},
 		{"%%", printf_37}, {"%d", print_int},
-		{"%i", print_int}, {"%b", printf_binary},
+		{"%i", print_int},
 	};
 
 	va_list args;
