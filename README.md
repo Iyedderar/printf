@@ -8,3 +8,5 @@ task 3 :  With a face like mine, I do better in print
             (Handle the following custom conversion specifiers:b: the unsigned int argument is converted to binary)
 task 4 : What one has not experienced, one will never understand in print 
             (Handle the following conversion specifiers:u, o, x, X)
+task 5 : Nothing in fine print is ever good news
+            (Use a local buffer of 1024 chars in order to call write as little as possible.)
